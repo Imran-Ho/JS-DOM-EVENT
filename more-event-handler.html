@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More event handler</title>
+</head>
+<body>
+    <h1>we will see more event handlers with function</h1>
+    <div>
+        <button id="mouse-event">Mouse Event</button><br>
+        <input id="input-text" type="text"><br>
+        <h3>for key event handler</h3>
+        <input id="input-text-forkey" type="text">
+    </div>
+
+    <script>
+        document.getElementById('mouse-event').addEventListener('mousemove', function (){
+            console.log('mouse move handler')
+        })
+
+        // focus event handler
+        document.getElementById('input-text').addEventListener('focus', function (){
+            console.log('focus event handler will work when it will remain in focus')
+        })
+        // blur event handler
+        document.getElementById('input-text').addEventListener('blur', function (){
+            console.log('blur event handler will work when it will remain in focus')
+        })
+
+        // key event handler
+        // document.getElementById('input-text-forkey').addEventListener('keydown', function (event){
+        //     console.log(event.target.value)
+        // })
+
+        // // key event handler
+        // document.getElementById('input-text-forkey').addEventListener('keypress', function (event){
+        //     console.log(event.target.value)
+        // })
+
+        // key event handler
+        document.getElementById('input-text-forkey').addEventListener('keyup', function (event){
+            console.log(event.target.value)
+        })
+    </script>
+    
+</body>
+</html>

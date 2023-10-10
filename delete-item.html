@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Item </title>
+</head>
+<body>
+    <main>
+        <section>
+            <h1>Delete the option using event handler</h1>
+            <p id="delete-info">Hi Maliha</p>
+        </section>
+        <section>
+            <input id="input-field" placeholder="write delete" type="text">
+            <button id="delete-click" disabled>Delete item</button>
+        </section>
+    </main>
+    <script>
+        document.getElementById('input-field').addEventListener('keyup', function (event){
+            const text = event.target.value;
+            const deleteButton = document.getElementById('delete-click');
+            console.log(text)
+            if(text === 'delete'){
+                deleteButton.removeAttribute('disabled');
+            }
+            else{
+                deleteButton.setAttribute('disabled', true);
+            }
+            
+        });
+        document.getElementById('delete-click').addEventListener('click', function (){
+
+            const deleteInfo = document.getElementById('delete-info');
+            deleteInfo.style.display = 'none';
+        })
+    </script>
+</body>
+</html>
