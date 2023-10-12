@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubble</title>
+    <style>
+        #body{
+            border: 2px solid red;
+        }
+        #list-container{
+            border: 5px solid yellow;
+        }
+        #list-ul{
+            border: 2px solid green;
+        }
+        #item-3{
+            border: 2px dashed orange;
+        }
+    </style>
+</head>
+<body id="body">
+    <main>
+        <section id="list-container">
+            <h2>Event Bubble is </h2>
+            <ul id="list-ul">
+                <li id="item-1">Lorem, ipsum.</li>
+                <li id="item-2">Enim, consequuntur.</li>
+                <li id="item-3">Molestias, ad?</li>
+                <li id="item-4">Esse, id.</li>
+                <li id="item-5">Autem, vel.</li>
+                <li id="item-6">Amet, deserunt.</li>
+            </ul>
+        </section>
+    </main>
+    <script>
+        // document.getElementById('item-3').addEventListener('click', function (){
+        //     console.log('Item-3 is clicked.')
+        // })
+        // document.getElementById('item-3').addEventListener('click', function (event){
+        //     console.log('Item-3 is clicked.')
+        //     event.stopPropagation(); // it will stop uper role. does not interfere bubble event. only maintain its role.
+        // })
+        document.getElementById('item-3').addEventListener('click', function (event){
+            console.log('Item-3 is clicked.')
+            event.stopImmediatePropagation(); // it will stop surrounding roles what it has. does not interfere bubble event. only maintain its role.
+        })
+        document.getElementById('item-3').addEventListener('click', function (){
+            console.log('Item-3 is clicked second time.')
+        })
+        document.getElementById('item-3').addEventListener('click', function (){
+            console.log('Item-3 is clicked third time time.')
+        })
+
+
+        document.getElementById('list-ul').addEventListener('click', function (){
+            console.log('List-ul is clicked.')
+        })
+        document.getElementById('list-container').addEventListener('click', function (){
+            console.log('List-container is clicked.')
+        })
+        document.getElementById('body').addEventListener('click', function (){
+            console.log('Body is clicked.')
+        })
+
+    </script>
+</body>
+</html>
