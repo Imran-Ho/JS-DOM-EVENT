@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegate</title>
+</head>
+<body>
+    <h1>Explore Event Delegate</h1>
+    <section>
+       <ul id="list-container">
+        <li class="item">Lorem, ipsum.</li>
+        <li class="item">Deserunt, fugit.</li>
+        <li class="item">Dignissimos, explicabo?</li>
+        <li class="item">Voluptatum, nemo.</li>
+        <li class="item">Eveniet, quod?</li>
+        <li class="item">Aspernatur, impedit!</li>
+       </ul>
+    </section>
+    <section>
+        <button id="add-item">Add Item</button>
+    </section>
+
+    <script>
+        // const items = document.getElementsByClassName('item');
+        // for(const item of items){
+        //     item.addEventListener('click', function (event){
+                
+        //         // console.log(event.target) // whome i click.
+        //         // console.log(event.target.parentNode) // reach out parent Ul.
+        //         event.target.parentNode.removeChild(event.target) // go to parent Ul and remove the clicked child. (parent child)
+        //     })   
+        // }
+
+        // for rempving existing items and added items, you have to delegate the event handler to the parent so that every children come under parent.
+        document.getElementById('list-container').addEventListener('click', function(event){
+            event.target.parentNode.removeChild(event.target);
+        })
+
+        document.getElementById('add-item').addEventListener('click', function (){
+            const listContainer = document.getElementById('list-container');
+            const li = document.createElement('li');
+            li.innerText = 'New Item Added.';
+            li.classList.add('item');   // add class with li
+            listContainer.appendChild(li);
+        })
+    </script>
+</body>
+</html>
