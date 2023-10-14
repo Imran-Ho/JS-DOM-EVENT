@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <h1 class="text-4xl text-center mt-6">Personal account in the Bank</h1>
+        <section>
+            <div class="grid grid-cols-3 gap-4 m-6">
+                <div class="bg-lime-400">
+                    <h3 class="text-2xl p-6">Deposit</h3>
+                    <p class="text-1xl p-6">$<span id="deposit-section" class="text-1xl p-6">00</span> </p>
+                </div>
+                <div class="bg-green-500">
+                    <h3 class="text-2xl p-6 ">Withdraw</h3>
+                    <p class="text-1xl p-6">$<span id="withdraw-section" class="text-1xl p-6">00</span> </p>
+                </div>
+                <div class="bg-teal-300">
+                    <h3 class="text-2xl p-6">Balance</h3>
+                    <p class="text-1xl p-6">$<span id="balance-section" class="text-1xl p-6">00</span> </p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="grid grid-cols-2 gap-3 m-6">
+                <div class="bg-lime-100 p-6">
+                    <h2 class="mb-3 text-3xl">Please Deposit</h2>
+                    <input id="input-deposit" class="block w-9/12" type="text" name="" id="">
+                    <button id="btn-deposit" class="bg-orange-300 rounded p-3 mt-6 hover:bg-red-300">Deposit</button>
+                </div>
+                <div class="bg-teal-300 p-6">
+                    <h2 class="mb-3 text-3xl">Please Withdraw</h2>
+                    <input id="input-withdraw" class="block w-9/12" type="text" name="" id="">
+                    <button id="btn-withdraw" class="bg-orange-300 rounded p-3 mt-6 hover:bg-red-300">Withdraw</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.getElementById('btn-deposit').addEventListener('click', function (){
+            //input section
+            const inputDeposit = document.getElementById('input-deposit');
+            const inputValueString = inputDeposit.value; // by default value type remains string.
+            const inputAmount = parseFloat(inputValueString);
+
+            inputDeposit.value = '';
+            
+            if(isNaN(inputAmount)){
+                alert('Please provide a number')
+                return;
+            }
+
+            //Deposit section  will show in the deposit section.
+            const depositSection = document.getElementById('deposit-section');
+            const depositValueString = depositSection.innerText; // by default innerTest type remains string.
+            const depositAmount = parseFloat(depositValueString);
+
+            //Balance section
+            const balanceSection = document.getElementById('balance-section');
+            const balanceRemainingAmountString = balanceSection.innerText;
+            const balanceAmount = parseFloat(balanceRemainingAmountString);
+
+
+            // add input value and deposit value and balance together.
+            const totalDeposited = inputAmount + depositAmount;
+            const balanceTotal = inputAmount + balanceAmount;
+            // now it will show in the deposit section above.
+            depositSection.innerText = totalDeposited;
+            balanceSection.innerText = balanceTotal;
+
+
+           
+        })
+        document.getElementById('btn-withdraw').addEventListener('click', function (){
+            const inputWithDrawValue = document.getElementById('input-withdraw');
+            const inputWithdrawValueString = inputWithDrawValue.value;
+            const inputWithdrawAmount = parseFloat(inputWithdrawValueString);
+
+            inputWithDrawValue.value = '';
+
+            if(isNaN(inputWithdrawAmount)){
+                alert('Please provide a number')
+                return;
+            }
+            
+
+            const withdrawSectionField = document.getElementById('withdraw-section');
+            
+            // console.log(typeof withdrawAmount)
+
+            //Balance section
+            const balanceSectionField = document.getElementById('balance-section');
+            const balanceRemainingAmountString = balanceSectionField.innerText;
+            const balanceAmount = parseFloat(balanceRemainingAmountString);
+
+            
+
+            if(inputWithdrawAmount > balanceAmount){
+                alert('there is no enough amount what you ask for.')
+                return;
+            }
+
+            const withdrawValueString = withdrawSectionField.innerText;
+            const withdrawAmount = parseFloat(withdrawValueString);
+            
+
+            const totalWithdrawn = withdrawAmount + inputWithdrawAmount;
+            const totalBalance = balanceAmount - inputWithdrawAmount;
+            
+
+            withdrawSectionField.innerText = totalWithdrawn;
+            balanceSectionField.innerText = totalBalance;
+
+            
+
+            
+        })
+    </script>
+</body>
+</html>
