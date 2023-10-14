@@ -30,12 +30,12 @@
         </section>
         <section>
             <div class="grid grid-cols-2 gap-3 m-6">
-                <div class="bg-lime-100 p-6">
+                <div class="bg-teal-200 p-6">
                     <h2 class="mb-3 text-3xl">Please Deposit</h2>
                     <input id="input-deposit" class="block w-9/12" type="text" name="" id="">
                     <button id="btn-deposit" class="bg-orange-300 rounded p-3 mt-6 hover:bg-red-300">Deposit</button>
                 </div>
-                <div class="bg-teal-300 p-6">
+                <div class="bg-lime-100 p-6">
                     <h2 class="mb-3 text-3xl">Please Withdraw</h2>
                     <input id="input-withdraw" class="block w-9/12" type="text" name="" id="">
                     <button id="btn-withdraw" class="bg-orange-300 rounded p-3 mt-6 hover:bg-red-300">Withdraw</button>
@@ -51,7 +51,7 @@
             const inputAmount = parseFloat(inputValueString);
 
             inputDeposit.value = '';
-            
+
             if(isNaN(inputAmount)){
                 alert('Please provide a number')
                 return;
@@ -124,4 +124,7 @@
         })
     </script>
 </body>
+<footer>
+    <h2 class="text-4xl text-center mt-6">First deposit your amount of money, then withdraw.</h2>
+</footer>
 </html>
